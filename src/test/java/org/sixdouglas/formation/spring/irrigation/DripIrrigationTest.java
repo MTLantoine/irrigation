@@ -98,4 +98,11 @@ class DripIrrigationTest {
                 .expectComplete()
                 .verify();
     }
+
+    @Test
+    void followDropper_with_error() {
+        StepVerifier.create(dripIrrigation.followDetailedDropperWithError(1, 2, 3))
+                .expectError()
+                .verify();
+    }
 }

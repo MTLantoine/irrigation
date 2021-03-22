@@ -50,8 +50,12 @@ Fill the `org.sixdouglas.formation.spring.irrigation.DripIrrigation.followDrops`
 
 #### Step 2
 
-Then complete the `org.sixdouglas.formation.spring.irrigation.DripIrrigation.followDropper` and `org.sixdouglas.formation.spring.irrigation.producer.GreenHouseProducer.getDrops` functions to make the associated Unit Test runs successfully.
+Then complete the `org.sixdouglas.formation.spring.irrigation.DripIrrigation.followDropper` and `org.sixdouglas.formation.spring.irrigation.producer.GreenHouseProducer.getDrops` functions to make the associated Unit Test runs successfully. 
 
 #### Step 3
 
 Next complete the `org.sixdouglas.formation.spring.irrigation.DripIrrigation.followDetailedDropper`, `org.sixdouglas.formation.spring.irrigation.DripIrrigation.getDetailedDrop` functions to make the associated Unit Test runs successfully.
+
+#### Step 4
+
+Then update the Dropper 3 from row 2 of the greenhouse 1 to mark it as broken. Then update the function `org.sixdouglas.formation.spring.irrigation.producer.GreenHouseProducer.buildDrop` to return an error whenever the Dropper is broken.Finally complete the `org.sixdouglas.formation.spring.irrigation.DripIrrigation.followDetailedDropperWithError`  functions to make the associated Unit Test runs successfully. And don't forget that other Unit Tests should continue to run successfully without being modified.

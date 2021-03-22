@@ -97,6 +97,8 @@ public final class GreenHouseProducer {
     }
 
     private static Mono<Drop> buildDrop(GreenHouse greenHouse, Row row, Dropper dropper) {
+        //TODO make this function return a Mono.error if the Dropper is Broken
+
         return Mono.just(Drop.builder()
                 .greenHouseId(greenHouse.getId())
                 .rowId(row.getId())

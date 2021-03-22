@@ -1,7 +1,6 @@
 package org.sixdouglas.formation.spring.irrigation;
 
 import org.sixdouglas.formation.spring.irrigation.producer.GreenHouseProducer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -58,5 +57,12 @@ public class DripIrrigation {
                         .greenHouse(x)
                         .instant(Instant.now())
                         .build());
+    }
+
+    public Flux<DetailedDrop> followDetailedDropperWithError(int greenHouseId, int rowId, int dropperId) {
+        //TODO use the GreenHouseProducer.getDropper() function to find the Dropper information wrap in a Greenhouse
+        //TODO    then map it to build a DetailedDrop
+        //TODO any error should be returned from this function
+        return null;
     }
 }
