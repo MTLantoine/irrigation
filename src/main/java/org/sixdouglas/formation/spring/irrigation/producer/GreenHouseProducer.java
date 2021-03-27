@@ -105,6 +105,7 @@ public final class GreenHouseProducer {
                 .build());
     }
 
+
     public static Mono<GreenHouse> getDropper(int greenHouseId, int rowId, int dropperId) {
 
         final Optional<GreenHouse> greenHouseOptional = greenHouses.stream()
@@ -134,9 +135,5 @@ public final class GreenHouseProducer {
         //TODO Build a new Greenhouse that will contain a newly built Row that will contain a newly built Dropper
         //TODO    using the data of the given objects
         return Mono.empty();
-    }
-
-    public static void main (String[] args) {
-        getDrops();
     }
 }
