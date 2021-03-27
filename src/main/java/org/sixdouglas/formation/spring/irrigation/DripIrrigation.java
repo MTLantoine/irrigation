@@ -14,6 +14,7 @@ public class DripIrrigation {
     private static Logger LOGGER = LoggerFactory.getLogger(DripIrrigation.class);
 
     public Flux<Drop> followDrops() {
+        //TODO Create a Flux that would emit a Drop every 20 millis seconds
         return Flux.interval(Duration.ofMillis(20)).map(aLong -> Drop.builder()
                 .dropperId(1)
                 .greenHouseId(1)
@@ -24,11 +25,11 @@ public class DripIrrigation {
 
     public Flux<Drop> followDropper(int greenHouseId, int rowId, int dropperId) {
         //TODO use the GreenHouseProducer.getDrops() function as producer, but filter the output to fit the given criteria
-        return null;
-    }
-
-    public Flux<Drop> followDropper(int greenHouseId, int rowId, int dropperId) {
-        //TODO use the GreenHouseProducer.getDrops() function as producer, but filter the output to fit the given criteria
-        return null;
+        GreenHouseProducer greenHouseProducer = new GreenHouseProducer();
+        Flux<Drop> fluxDrop = greenHouseProducer.getDrops().filter(drop ->
+                drop.getGreenHouseId() == greenHouseId &&
+                drop.getRowId() == rowId &&
+                drop.getDropperId() == dropperId);
+        return fluxDrop;
     }
 }
