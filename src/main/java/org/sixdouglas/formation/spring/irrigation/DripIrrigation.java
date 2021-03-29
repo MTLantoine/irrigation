@@ -65,11 +65,4 @@ public class DripIrrigation {
         //TODO any error should be returned from this function
         return null;
     }
-
-    public Flux<DetailedDrop> followDetailedDropperWithError(int greenHouseId, int rowId, int dropperId) {
-        //TODO use the GreenHouseProducer.getDropper() function to find the Dropper information wrap in a Greenhouse
-        //TODO    then map it to build a DetailedDrop
-        //TODO any error should be returned from this function
-        return null;
-    }
 }
