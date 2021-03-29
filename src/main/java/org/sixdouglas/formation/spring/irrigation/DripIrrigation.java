@@ -63,6 +63,12 @@ public class DripIrrigation {
         //TODO use the GreenHouseProducer.getDropper() function to find the Dropper information wrap in a Greenhouse
         //TODO    then map it to build a DetailedDrop
         //TODO any error should be returned from this function
-        return null;
+
+        return GreenHouseProducer.getDrops()
+                .filter(drop ->
+                        drop.getGreenHouseId() == greenHouseId &&
+                                drop.getRowId() == rowId &&
+                                drop.getDropperId() == dropperId)
+                .flatMap(this::getDetailedDrop);
     }
 }
