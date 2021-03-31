@@ -18,19 +18,21 @@ public class DripIrrigation {
     public Flux<Drop> followDrops() {
         //TODO Create a Flux that would emit a Drop every 20 millis seconds
         return Flux.interval(Duration.ofMillis(20)).map(aLong -> Drop.builder()
-                .dropperId(1)
                 .greenHouseId(1)
                 .rowId(1)
+                .dropperId(1)
                 .instant(Instant.now())
                 .build());
     }
 
     public Flux<Drop> followDropper(int greenHouseId, int rowId, int dropperId) {
         //TODO use the GreenHouseProducer.getDrops() function as producer, but filter the output to fit the given criteria
-        return GreenHouseProducer.getDrops().filter(drop ->
-                drop.getGreenHouseId() == greenHouseId &&
-                drop.getRowId() == rowId &&
-                drop.getDropperId() == dropperId);
+        return GreenHouseProducer.getDrops()
+                .onErrorContinue(BrokenDropperException.class, (throwable, o) -> LOGGER.error("Error {}, {}", throwable.getMessage(), o))
+                .filter(drop ->
+                    drop.getGreenHouseId() == greenHouseId &&
+                    drop.getRowId() == rowId &&
+                    drop.getDropperId() == dropperId);
     }
 
     public Flux<DetailedDrop> followDetailedDropper(int greenHouseId, int rowId, int dropperId) {
@@ -38,6 +40,7 @@ public class DripIrrigation {
         //TODO    then map it to a DetailedDrop using the getDetailedDrop() function
 
         return GreenHouseProducer.getDrops()
+                .onErrorContinue(BrokenDropperException.class, (throwable, o) -> LOGGER.error("Error {}, {}", throwable.getMessage(), o))
                 .filter(drop ->
                     drop.getGreenHouseId() == greenHouseId &&
                             drop.getRowId() == rowId &&
